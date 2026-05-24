@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩宇瑶 (Yuyao Han) - 个人作品集</title>
+    <style>
+        /* ==========================================================================
+           1. 氛围基调与全局变量 (杏黄 & 奶白 & 暖橙)
+           ========================================================================== */
+        :root {
+            --primary-color: #FFB246;       /* 核心主色：暖橙 */
+            --primary-hover: #E59830;       /* 暖橙悬停深色 */
+            --accent-bg: #FFE8B2;          /* 辅助亮点：杏黄 */
+            --bg-light: #FFF5E2;            /* 页面基本底色：奶白 */
+            --bg-card: #FFFFFF;             /* 卡片纯白 */
+            --bg-footer: #FFE8B2;           /* 页脚杏黄 */
+            
+            --text-dark: #2C2A27;           /* 文字深色 */
+            --text-muted: #5C5852;          /* 文字中色 */
+            --text-light: #8C867E;          /* 文字浅色 */
+            
+            --radius-md: 16px;              
+            --radius-lg: 24px;              
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(180deg, 
+                #FFF5E2 0%,    
+                #FFE8B2 12%,   
+                #FFFFFF 28%,   
+                #FFF5E2 45%,   
+                #FFFFFF 65%,   
+                #FFF7E7 85%,   
+                #FFE8B2 100%   
+            );
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           2. 导航栏 (Header)
+           ========================================================================== */
+        header {
+            background: rgba(255, 245, 226, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 178, 70, 0.15);
+        }
+        header .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        header nav {
+            display: flex;
+            gap: 24px;
+        }
+        header nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+        header nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           3. 按钮系统
+           ========================================================================== */
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+        .btn {
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border-radius: 8px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-orange {
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(255, 178, 70, 0.2);
+        }
+        .btn-orange:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 178, 70, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+        .btn-outline:hover {
+            background: rgba(44, 42, 39, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           4. 英雄首屏 (Hero Section)
+           ========================================================================== */
+        .hero {
+            padding: 90px 0 130px 0;
+            position: relative;
+        }
+        .hero .grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-text h3 {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .hero-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .hero-tagline {
+            background: var(--primary-color);
+            color: white;
+            display: inline-block;
+            padding: 5px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border-radius: 4px;
+        }
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .hero-avatar-placeholder {
+            width: 100%;
+            aspect-ratio: 0.8 / 1; 
+            background: transparent !important; 
+            border: none;
+            overflow: visible; 
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center;
+        }
+        .hero-avatar-placeholder img {
+            max-width: 100%;
+            height: auto;
+            max-height: 110%; 
+            object-fit: contain; 
+        }
+
+        /* ==========================================================================
+           5. 我在做什么 (What I Do)
+           ========================================================================== */
+        .what-i-do {
+            padding: 120px 0 90px 0;
+            margin-top: -100px; 
+            clip-path: polygon(0 70px, 35% 20px, 65% 85px, 100% 10px, 100% 100%, 0 100%);
+            -webkit-clip-path: polygon(0 70px, 35% 20px, 65% 85px, 100% 10px, 100% 100%, 0 100%);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            border: 1px solid rgba(255, 178, 70, 0.15);
+            padding: 35px 24px;
+            text-align: center;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.02);
+        }
+        .service-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 178, 70, 0.12);
+        }
+        .service-icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-bg);
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+        }
+        .service-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           6. 关于我 (About Me) 
+           ========================================================================== */
+        .about {
+            padding: 90px 0 50px 0;
+            position: relative;
+        }
+        .about-content-wrapper grid {
+            margin-top: 40px;
+        }
+        .about .grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-image-box {
+            width: 100%;
+            aspect-ratio: 0.85 / 1;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            overflow: hidden; 
+        }
+        .about-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            font-size: 14.5px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checklist li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: 900;
+            border: 2px solid var(--primary-color);
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border-radius: 6px;
+            background: #FFF;
+        }
+
+        /* ==========================================================================
+           数据看板样式
+           ========================================================================== */
+        .counter-section {
+            padding: 40px 0 70px 0;
+        }
+        .counter-glass-panel {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(255, 178, 70, 0.2);
+            border-radius: var(--radius-md);
+            padding: 40px 30px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(255, 178, 70, 0.04);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .counter-item h3 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.1;
+            margin-bottom: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+        .counter-item p {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+       /* ==========================================================================
+           7. 作品集网格
+           ========================================================================== */
+        .portfolio {
+            padding: 60px 0 40px 0;
+            position: relative; 
+            z-index: 10;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 8px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 178, 70, 0.3);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+        .filter-tab:hover {
+            border-color: var(--primary-color);
+            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .filter-tab.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(255, 178, 70, 0.25);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 178, 70, 0.15);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; 
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, opacity 0.4s, box-shadow 0.3s;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(255, 178, 70, 0.12);
+        }
+
+        .portfolio-card::after {
+            content: '点击查看详情 ↗';
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(44, 42, 39, 0.75);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            z-index: 5;
+        }
+        .portfolio-card:hover::after {
+            opacity: 1;
+        }
+
+        .portfolio-card.is-hidden {
+            display: none !important;
+        }
+
+        .portfolio-img-box {
+            width: 100%;
+            aspect-ratio: 1.7 / 1;
+            background: linear-gradient(135deg, #2C2A27 0%, #4A4640 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 178, 70, 0.1);
+            overflow: hidden;
+        }
+        .portfolio-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .portfolio-card:hover .portfolio-img-box img {
+            transform: scale(1.05); 
+        }
+        
+        .portfolio-img-box::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 178, 70, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: scale(0.8);
+            z-index: 2;
+        }
+        .portfolio-card:hover .portfolio-img-box::after {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .portfolio-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            background: #FFFFFF;
+        }
+        .portfolio-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+        .portfolio-info p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .view-more-container {
+            text-align: center;
+            margin-top: 40px;
+            display: block; 
+        }
+
+        /* ==========================================================================
+           7.5 苹果风高级详情弹窗系统
+           ========================================================================== */
+        .apple-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999 !important; 
+            background: rgba(44, 42, 39, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .apple-modal.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .apple-container {
+            width: 90vw;
+            max-width: 1040px;
+            height: 82vh;
+            background: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            overflow: hidden;
+            transform: translateY(40px) scale(0.96);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+        .apple-modal.is-active .apple-container {
+            transform: translateY(0) scale(1);
+        }
+        .apple-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 38px;
+            height: 38px;
+            background: rgba(232, 232, 237, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            z-index: 110;
+            font-size: 16px;
+            font-weight: bold;
+            color: #1d1d1f;
+            transition: var(--transition);
+        }
+        .apple-close-btn:hover {
+            background: #E8E8ED;
+            transform: scale(1.05);
+        }
+        .apple-left-panel {
+            padding: 40px;
+            background: #FAFAFC;
+            border-right: 1px solid #E8E8ED;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
+        .apple-meta-cat {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #FFE8B2;
+            color: #2C2A27;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+        .apple-title {
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.3;
+            color: #1D1D1F;
+            margin-bottom: 20px;
+        }
+        .apple-divider {
+            height: 1px;
+            background: #E8E8ED;
+            margin-bottom: 20px;
+        }
+        .apple-section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8C867E;
+            margin-bottom: 8px;
+        }
+        .apple-abstract {
+            font-size: 14px;
+            color: #5C5852;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .apple-pill-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        .apple-tag-pill {
+            padding: 6px 14px;
+            background: #FFFFFF;
+            border: 1px solid #E8E8ED;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2C2A27;
+        }
+        .apple-tools-list {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 178, 70, 0.08);
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 178, 70, 0.15);
+        }
+        .apple-tools-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2C2A27;
+        }
+        
+        .apple-right-gallery-wrapper {
+            background: #F5F5F7;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .apple-slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .apple-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative; /* 为文案层绝对定位做基准 */
+        }
+        .apple-detail-img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            object-fit: contain;
+            background: #FFFFFF;
+        }
+
+        /* 朋友圈大图高级渐变文案遮罩层 */
+        .apple-slide-caption-overlay {
+            position: absolute;
+            bottom: 40px; /* 与外层 padding 底部对齐 */
+            left: 40px;   /* 与外层 padding 左侧对齐 */
+            right: 40px;  /* 与外层 padding 右侧对齐 */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+            color: #FFFFFF;
+            padding: 35px 24px 20px 24px;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            pointer-events: none; /* 穿透鼠标事件，保证不影响左右滑动操作 */
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        /* 激活状态下显示（只显示当前滑到的那一张文案） */
+        .apple-slide-caption-overlay.is-visible {
+            opacity: 1;
+        }
+        .caption-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #FFB246; /* 使用品牌橙色突出剧目信息 */
+            letter-spacing: 0.5px;
+        }
+        .caption-body {
+            font-size: 13.5px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+            white-space: pre-line; /* 完美保留换行符 */
+        }
+
+        .slider-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid #E8E8ED;
+            border-radius: 50%;
+            font-size: 22px;
+            font-weight: bold;
+            color: #1D1D1F;
+            display: none; /* 由 JS 控制显示 */
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+        .slider-nav-btn:hover {
+            background: #FFFFFF;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .btn-prev { left: 24px; }
+        .btn-next { right: 24px; }
+
+        /* ==========================================================================
+           8. 技能专区 
+           ========================================================================== */
+        .skills {
+            padding: 80px 0 110px 0;
+            position: relative;
+        }
+        .skills-glass-panel {
+            background: rgba(255, 255, 255, 0.4);       
+            border: 1px solid rgba(255, 255, 255, 0.65);  
+            border-radius: var(--radius-lg);
+            padding: 60px 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.01), 0 25px 60px rgba(218, 165, 32, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .skill-item {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 24px 20px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .skill-item:hover {
+            background: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 178, 70, 0.05);
+        }
+        .skill-icon-placeholder {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            opacity: 0.8;
+        }
+        .skill-item h5 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .skill-item p {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           9. 底部呼吁区与页脚
+           ========================================================================== */
+        .cta-block {
+            text-align: center;
+            padding: 95px 0;
+            position: relative;
+        }
+        .cta-block h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+        .cta-block .hero-buttons {
+            justify-content: center;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 178, 70, 0.15);
+            font-size: 13px;
+        }
+        footer .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+        .footer-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .footer-info p {
+            color: var(--text-light);
+        }
+        .footer-contacts {
+            text-align: right;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ==========================================================================
+           图片缩放灯箱 (Zoom Lightbox)
+           ========================================================================== */
+        .zoom-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+        }
+        .zoom-lightbox.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .zoom-lightbox-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .zoom-lightbox-img {
+            max-width: 92vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            transform-origin: center center;
+            transition: transform 0.1s ease;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .zoom-lightbox-img:active { cursor: grabbing; }
+        .zoom-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .zoom-lightbox-close:hover { background: rgba(255,255,255,0.3); }
+        .zoom-lightbox-hint {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            color: rgba(255,255,255,0.75);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px 18px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .zoom-controls {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            gap: 8px;
+        }
+        .zoom-ctrl-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .zoom-ctrl-btn:hover { background: rgba(255,255,255,0.3); }
+
+        /* 图片区悬浮提示徽章 */
+        .img-zoom-hint-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(44,42,39,0.7);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            z-index: 10;
+            letter-spacing: 0.3px;
+        }
+        .apple-right-gallery-wrapper:hover .img-zoom-hint-badge { opacity: 1; }
+
+        /* 长图查看器 */
+        .longimg-viewer {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            background: rgba(0,0,0,0.93);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .longimg-viewer.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .longimg-viewer-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            flex-shrink: 0;
+        }
+        .longimg-viewer-title {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .longimg-viewer-close {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50%;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .longimg-viewer-close:hover { background: rgba(255,255,255,0.25); }
+        .longimg-viewer-scroll {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px 40px;
+        }
+        .longimg-viewer-scroll::-webkit-scrollbar { width: 4px; }
+        .longimg-viewer-scroll::-webkit-scrollbar-track { background: transparent; }
+        .longimg-viewer-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+        .longimg-viewer img {
+            max-width: 780px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* 长图 / 视频 / Drive 按钮区通用样式 */
+        .pop-action-section {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .pop-action-btn {
+            display: block;
+            padding: 11px 16px;
+            background: #2C2A27;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-align: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+        .pop-action-btn:hover {
+            background: #FFB246;
+            transform: translateY(-1px);
+        }
+
+        .apple-toast {
+            position: fixed;
+            top: -60px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(44, 42, 39, 0.9);
+            color: #FFFFFF;
+            padding: 12px 28px;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 999999;
+            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+        .apple-toast.is-show {
+            top: 30px;
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           10. 移动端响应式布局
+           ========================================================================== */
+        @media (max-width: 768px) {
+            section { padding: 50px 0; }
+            .hero { padding-bottom: 80px; }
+            .hero .grid, .about .grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero { text-align: center; }
+            .hero-buttons { flex-direction: column; gap: 12px; width: 100%; }
+            .btn { width: 100%; }
+            .what-i-do {
+                margin-top: -60px;
+                clip-path: polygon(0 40px, 35% 15px, 65% 55px, 100% 10px, 100% 100%, 0 100%);
+            }
+            .services-grid { grid-template-columns: 1fr; }
+            .counter-glass-panel { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 30px 15px; }
+            .portfolio-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+            .skills-glass-panel { padding: 40px 20px; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            footer .grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+            .footer-contacts { text-align: center; }
+            .apple-container { grid-template-columns: 1fr; height: 90vh; }
+            .apple-left-panel { padding: 24px; border-right: none; border-bottom: 1px solid #E8E8ED; }
+            .apple-right-gallery-wrapper { height: 100%; }
+            .apple-slide { padding: 20px; }
+            .apple-slide-caption-overlay { bottom: 20px; left: 20px; right: 20px; padding: 20px 15px 15px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="apple-toast" id="appleToast">
+        <span style="color: var(--primary-color);">✓</span> 微信号已成功复制，可直接添加
+    </div>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">YUYAO HAN</div>
+            <nav>
+                <a href="#home">首页</a>
+                <a href="#about">关于我</a>
+                <a href="#portfolio">作品集</a>
+                <a href="#contact">联系我</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container grid">
+            <div class="hero-text">
+                <h3>Hi There!</h3>
+                <h1>我是 韩宇瑶</h1>
+                <div class="hero-tagline">剧场摄影 & 内容策略专家</div>
+                <p>中国传媒大学广告学大三学生，擅长用内容连接用户。通过剧场摄影与自媒体运营，将每一个现场的感动转化为极具传播力的商业内容。</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-orange">联系我 / CONTACT ME</a>
+                    <a href="#portfolio" class="btn btn-outline">浏览作品 / VIEW MY WORK</a>
+                </div>
+            </div>
+            <div class="hero-avatar-placeholder">
+                <img src="头像.png?v=3" alt="韩宇瑶的个人半身照/形象照">
+            </div>
+        </div>
+    </section>
+
+    <section class="what-i-do">
+        <div class="container">
+            <h2 class="section-title" style="margin-top: 10px;">What I Do</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon-box" style="display: flex; align-items: center; justify-content: center;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2C2A27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                    </div>
+                    <h4>图频制作</h4>
+                    <p>独立承接舞台暗光抓拍。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box" style="display: flex; align-items: center; justify-content: center;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2C2A27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                    </div>
+                    <h4>内容策略</h4>
+                    <p>提供深度消费者画像分析、全流程营销策划提案。产出中央新闻重点网站级别的硬核文案内容。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box" style="display: flex; align-items: center; justify-content: center;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2C2A27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5s1 4.24 2.5 5.5M19.5 16.5c1.5 1.26 2.5 3.19 2.5 5.5s-1 4.24-2.5 5.5"/><path d="m12 2 3 5.5 6 1.5-4.5 4.5 1 6.5-5.5-3.5-5.5 3.5 1-6.5L3 9l6-1.5z"/></svg>
+                    </div>
+                    <h4>社媒运营</h4>
+                    <p>具备中文音乐剧等垂类账号从0到1冷启动经验，熟稔主流社交媒体平台的算法推荐与破圈联动机制。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="about-content-wrapper grid">
+                <div class="about-image-box">
+                    <img src="about_me.jpg?v=3" alt="韩宇瑶的生活照/工作照配图">
+                </div>
+                <div class="about-text">
+                    <p>我目前就读于中国传媒大学广告学专业（2023级/2027届）。我的实践履历横跨国家级重点新闻媒体（光明网实习经历）到垂直赛道自媒体创作者。我的核心追求，是实现创意表达与严谨研究分析之间的完美融合。</p>
+                    <ul class="checklist">
+                        <li>舞台与演艺活动暗光抓拍、情绪捕捉经验</li>
+                        <li>光明网官方公众号 30+ 篇深度推文独立交付经验</li>
+                        <li>北京市老字号国潮青年设计大赛·营销方案二等奖</li>
+                        <li>小红书戏剧垂类账号冷启动，单篇笔记获千赞</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="counter-section">
+        <div class="container">
+            <div class="counter-glass-panel">
+                <div class="counter-item">
+                    <h3 class="stat-number" data-target="30">0</h3>
+                    <p>篇独立闭环交付央媒稿件</p>
+                </div>
+                <div class="counter-item">
+                    <h3 class="stat-number" data-target="100000">0</h3>
+                    <p>全网内容触达与联动曝光</p>
+                </div>
+                <div class="counter-item">
+                    <h3 class="stat-number" data-target="500">0</h3>
+                    <p>戏剧圈层高粘性涨粉冷启动</p>
+                </div>
+                <div class="counter-item">
+                    <h3 class="stat-number" data-target="100">0</h3>
+                    <p>商业与项目零事故交付率</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">全部</div>
+                <div class="filter-tab" data-filter="photo">图频制作</div>
+                <div class="filter-tab" data-filter="strategy">内容策略</div>
+                <div class="filter-tab" data-filter="media">社媒运营</div>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-category="photo" onclick="openAppleModal(1)">
+                    <div class="portfolio-img-box"><img src="p1.jpg" alt="剧场摄影精选"></div>
+                    <div class="portfolio-info">
+                        <h4>1. 剧场摄影精选</h4>
+                        <p>舞台摄影是在黑暗中追光。我擅长在暗光、快速变化的环境中捕捉演员的真实情绪与戏剧瞬间。以下精选三部音乐剧的返场/谢幕照片，共9张，涵盖《本杰明巴顿奇事》《道林格雷的画像》《宝玉》，每张附拍摄说明。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="photo" onclick="openAppleModal(2)">
+                    <div class="portfolio-img-box"><img src="p2.jpg" alt="特邀媒体代表"></div>
+                    <div class="portfolio-info">
+                        <h4>2. 特邀媒体代表 · 见面会图频拍摄与内容发布</h4>
+                        <p>以媒体代表身份参加《剧院魅影》《寻找李二狗》等剧目主创见面会及发布会，负责现场图频拍摄、内容整理，并独立完成小红书笔记的制作与发布，实现活动内容的多平台传播。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="photo" onclick="openAppleModal(3)">
+                    <div class="portfolio-img-box"><img src="p3.jpg" alt="广告 / 海报设计"></div>
+                    <div class="portfolio-info">
+                        <h4>3. 广告 / 海报设计</h4>
+                        <p>使用PS独立完成学院奖/大广赛品牌活动海报、京珐牌策划案PPT视觉美化，以及光明网客户“江苏银行北京分行”的宣传海报制作，具备商业级设计输出能力。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="strategy" onclick="openAppleModal(4)">
+                    <div class="portfolio-img-box"><img src="p4.jpg" alt="京珐牌营销策划案"></div>
+                    <div class="portfolio-info">
+                        <h4>4. 京珐牌营销策划案 (常规赛道二等奖)</h4>
+                        <p>2025北京市老字号国潮青年设计大赛常规赛道二等奖。深度参与消费者调研与“老字号再就业”创意构思，主导PPT视觉设计，方案获评委好评。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="strategy" onclick="openAppleModal(5)">
+                    <div class="portfolio-img-box"><img src="p5.jpg" alt="光明网健康类推文高级策划"></div>
+                    <div class="portfolio-info">
+                        <h4>5. 光明网健康类推文高级策划</h4>
+                        <p>在光明网实习期间，为客户“江苏银行北京分行”官方公众号主动提案并撰写《唤醒春日健康活力，您的初春保养指南请查收》，完成文案与排版，发布零差错，体现内容策划与健康类兴趣。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="strategy" onclick="openAppleModal(6)">
+                    <div class="portfolio-img-box"><img src="p6.jpg" alt="学院奖 / 大广赛全案品牌策略"></div>
+                    <div class="portfolio-info">
+                        <h4>6. 学院奖 / 大广赛全案品牌策略</h4>
+                        <p>为超能、碧柔等品牌完成消费者画像分析、活动策划与创意物料制作，经历完整营销策划流程，积累团队协作与提案能力。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="media" onclick="openAppleModal(7)">
+                    <div class="portfolio-img-box"><img src="p7.jpg" alt="小红书戏剧垂直赛道账号冷启动运营"></div>
+                    <div class="portfolio-info">
+                        <h4>7. 小红书戏剧垂直赛道账号冷启动运营</h4>
+                        <p>从0到1运营，专注中文音乐剧。独立负责拍摄、修图、文案、互动。单篇点赞破千，累计涨粉500+，熟悉平台推荐机制。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="media" onclick="openAppleModal(8)">
+                    <div class="portfolio-img-box"><img src="p8.jpg" alt="与戏剧垂直头部自媒体联合深度合作传播"></div>
+                    <div class="portfolio-info">
+                        <h4>8. 与戏剧垂直头部自媒体联合深度合作传播</h4>
+                        <p>与戏剧大号合作，作品用于多渠道宣传；同时以媒体代表身份产出内容并发布至个人账号，形成传播联动。</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="media" onclick="openAppleModal(9)">
+                    <div class="portfolio-img-box"><img src="p9.jpg" alt="光明网官方新媒体公众号高阶内容运营"></div>
+                    <div class="portfolio-info">
+                        <h4>9. 光明网官方新媒体公众号高阶内容运营</h4>
+                        <p>在光明网实习期间，独立负责客户“江苏银行北京分行”官方公众号的内容运营，累计发布超30篇内容，包括节气、季节、健康类。主动提案并执行，确保零差错。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-more-container" id="viewMoreWrapper">
+                <button class="btn btn-outline" id="viewMoreBtn">查看全部项目 / VIEW ALL PROJECTS</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills">
+        <div class="container">
+            <div class="skills-glass-panel">
+                <h2 class="section-title">SKILLS & TOOLS</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon-placeholder" style="display: flex; align-items: center; justify-content: center; font-size: 16px;">📸</div>
+                        <h5>PHOTOSHOP</h5>
+                        <p>微单暗光抓拍、RAW格式底层调色、Adobe Photoshop 商业级图像重塑。</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon-placeholder" style="display: flex; align-items: center; justify-content: center; font-size: 16px;">📈</div>
+                        <h5>Office</h5>
+                        <p>Excel数据分析、PPT商业结案美化。</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon-placeholder" style="display: flex; align-items: center; justify-content: center; font-size: 16px;">✍️</div>
+                        <h5>新媒体生产</h5>
+                        <p>央媒级别严谨文案撰写、秀米/135等高阶网格排版系统、多账号协同分发。</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon-placeholder" style="display: flex; align-items: center; justify-content: center; font-size: 16px;">📱</div>
+                        <h5>微单相机</h5>
+                        <p>舞台、活动高质量摄影。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-block" id="contact">
+        <div class="container">
+            <h2>期待与您共同探索更多创意的可能性<br>LET'S CREATE AMAZING CONTENT TOGETHER!</h2>
+            <div class="hero-buttons">
+                <a href="mailto:18078347466@163.com" class="btn btn-orange">发送邮件 / SEND EMAIL</a>
+                <button class="btn btn-outline" onclick="copyWeChatID('13796354006')">微信联系 / WECHAT</button>
+                <button class="btn btn-outline" onclick="copyPhoneNumber('18078347466')">电话联系 / CALL</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container grid">
+            <div class="footer-info">
+                <h3>YUYAO HAN</h3>
+                <p>© 2026 韩宇瑶. 保留所有权利。中国传媒大学 · 广告学院</p>
+            </div>
+            <div class="footer-contacts">
+                <p>Email: 18078347466@163.com</p>
+                <p>Phone: 18078347466</p>
+                <p>小红书: 一头鱼ww</p>
+                <p>Location: 北京 (Beijing), China</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="apple-modal" id="appleModal">
+        <div class="apple-container">
+            <button class="apple-close-btn" id="modalCloseBtn">✕</button>
+            <div class="apple-left-panel">
+                <div>
+                    <span class="apple-meta-cat" id="popCategory">分类</span>
+                    <h3 class="apple-title" id="popTitle">标题</h3>
+                    <div class="apple-divider"></div>
+                    <div class="apple-section-label">项目摘要</div>
+                    <p class="apple-abstract" id="popAbstract">详情加载中...</p>
+                    <div class="apple-section-label">核心标签</div>
+                    <div class="apple-pill-box" id="popPills"></div>
+                </div>
+                <div>
+                    <div class="apple-section-label">应用工具</div>
+                    <div class="apple-tools-list">
+                        <div id="popToolIcon"></div>
+                        <span class="apple-tools-text" id="popToolText">工具</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="apple-right-gallery-wrapper">
+                <button class="slider-nav-btn btn-prev" id="slidePrev">‹</button>
+                <div class="apple-slider-track" id="popSliderTrack">
+                    </div>
+                <button class="slider-nav-btn btn-next" id="slideNext">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片缩放灯箱 -->
+    <div class="zoom-lightbox" id="zoomLightbox">
+        <div class="zoom-lightbox-inner" id="zoomLightboxInner">
+            <button class="zoom-lightbox-close" id="zoomClose">✕</button>
+            <img class="zoom-lightbox-img" id="zoomImg" src="" alt="放大查看">
+            <div class="zoom-lightbox-hint">滚轮缩放 · 拖动平移 · 双指手势</div>
+            <div class="zoom-controls">
+                <button class="zoom-ctrl-btn" id="zoomOut">－</button>
+                <button class="zoom-ctrl-btn" id="zoomReset">⊙</button>
+                <button class="zoom-ctrl-btn" id="zoomIn">＋</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 长图查看器 -->
+    <div class="longimg-viewer" id="longImgViewer">
+        <div class="longimg-viewer-header">
+            <span class="longimg-viewer-title" id="longImgTitle">长图详情</span>
+            <button class="longimg-viewer-close" id="longImgClose">✕</button>
+        </div>
+        <div class="longimg-viewer-scroll" id="longImgScroll">
+            <!-- 长图由 JS 动态注入 -->
+        </div>
+    </div>
+
+    <script>
+        // =====================================================================
+        // 图片缩放灯箱系统
+        // =====================================================================
+        (function() {
+            const lightbox = document.getElementById('zoomLightbox');
+            const zoomImg  = document.getElementById('zoomImg');
+            let scale = 1, panX = 0, panY = 0;
+            let isDragging = false, startX = 0, startY = 0, lastPanX = 0, lastPanY = 0;
+            let lastDist = null;
+
+            function applyTransform() {
+                zoomImg.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+            }
+            function resetView() { scale = 1; panX = 0; panY = 0; applyTransform(); }
+
+            window.openZoomLightbox = function(src, alt) {
+                zoomImg.src = src;
+                zoomImg.alt = alt || '';
+                resetView();
+                lightbox.classList.add('is-active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function closeLightbox() {
+                lightbox.classList.remove('is-active');
+                document.body.style.overflow = '';
+            }
+
+            document.getElementById('zoomClose').addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) { if (e.target === lightbox || e.target === document.getElementById('zoomLightboxInner')) closeLightbox(); });
+            document.getElementById('zoomIn').addEventListener('click', function() { scale = Math.min(scale * 1.3, 6); applyTransform(); });
+            document.getElementById('zoomOut').addEventListener('click', function() { scale = Math.max(scale / 1.3, 0.5); applyTransform(); });
+            document.getElementById('zoomReset').addEventListener('click', resetView);
+
+            // 滚轮缩放
+            lightbox.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.88 : 1.14;
+                scale = Math.min(Math.max(scale * delta, 0.5), 6);
+                applyTransform();
+            }, { passive: false });
+
+            // 鼠标拖动
+            zoomImg.addEventListener('mousedown', function(e) {
+                isDragging = true; startX = e.clientX - lastPanX; startY = e.clientY - lastPanY;
+            });
+            window.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                panX = e.clientX - startX; panY = e.clientY - startY;
+                lastPanX = panX; lastPanY = panY; applyTransform();
+            });
+            window.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+
+            // 触控双指缩放
+            lightbox.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const dx = e.touches[0].clientX - e.touches[1].clientX;
+                    const dy = e.touches[0].clientY - e.touches[1].clientY;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (lastDist) { scale = Math.min(Math.max(scale * (dist / lastDist), 0.5), 6); applyTransform(); }
+                    lastDist = dist;
+                }
+            }, { passive: false });
+            lightbox.addEventListener('touchend', function() { lastDist = null; });
+        })();
+
+        // =====================================================================
+        // 长图查看器系统
+        // =====================================================================
+        (function() {
+            const viewer = document.getElementById('longImgViewer');
+            const scroll = document.getElementById('longImgScroll');
+            const titleEl = document.getElementById('longImgTitle');
+
+            window.openLongImgViewer = function(images, title) {
+                titleEl.textContent = title || '长图详情';
+                scroll.innerHTML = '';
+                images.forEach(function(src) {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title || '';
+                    scroll.appendChild(img);
+                });
+                viewer.classList.add('is-active');
+                scroll.scrollTop = 0;
+                document.body.style.overflow = 'hidden';
+            };
+
+            document.getElementById('longImgClose').addEventListener('click', function() {
+                viewer.classList.remove('is-active');
+                document.body.style.overflow = '';
+            });
+        })();
+
+        // =====================================================================
+        // 微信一键复制
+        // =====================================================================
+        function copyWeChatID(wechatName) {
+            const tempInput = document.createElement('input');
+            tempInput.value = wechatName;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('appleToast');
+            if (toast) {
+                toast.innerText = ''; // 先清空
+                toast.innerHTML = '<span style="color: var(--primary-color);">✓</span> 微信号已复制，可直接添加';
+                toast.classList.add('is-show');
+                setTimeout(() => {
+                    toast.classList.remove('is-show');
+                }, 3000);
+            }
+        }
+        function copyPhoneNumber(phone) {
+            const tempInput = document.createElement('input');
+            tempInput.value = phone;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('appleToast');
+            if (toast) {
+                toast.innerText = ''; // 先清空
+                toast.innerHTML = '<span style="color: var(--primary-color);">✓</span> 手机号已复制，可直接拨打';
+                toast.classList.add('is-show');
+                setTimeout(() => { toast.classList.remove('is-show'); }, 3000);
+    }
+}
+
+        // =====================================================================
+        // 核心滑动追踪全局变量
+        // =====================================================================
+        let currentSlideIndex = 0;
+        let totalSlidesCount  = 0;
+        let activeImagesArray = [];
+
+        // 项目1朋友圈定制文案
+        const customCaptions = {
+            1: "𝟐𝟎𝟐𝟔.𝟎𝟓.𝟎𝟐上海共舞台·《本杰明巴顿奇事》\n可是丑小鸭本来就是白天鹅",
+            2: "𝟐𝟎𝟐𝟔.𝟎𝟓.𝟎𝟐上海共舞台·《本杰明巴顿奇事》\n可是丑小鸭本来就是白天鹅",
+            3: "𝟐𝟎𝟐𝟔.𝟎𝟓.𝟎𝟐上海共舞台·《本杰明巴顿奇事》\n可是丑小鸭本来就是白天鹅",
+            4: "𝟐𝟎𝟐𝟔.𝟎𝟒.𝟏𝟏合肥大剧院·《道林·格雷的画像》\n无论地狱和天堂都是我的救赎⚫",
+            5: "𝟐𝟎𝟐𝟔.𝟎𝟒.𝟏𝟏合肥大剧院·《道林·格雷的画像》\n无论地狱和天堂都是我的救赎⚫",
+            6: "𝟐𝟎𝟐𝟔.𝟎𝟒.𝟏𝟏合肥大剧院·《道林·格雷的画像》\n无论地狱和天堂都是我的救赎⚫",
+            7: "𝟐𝟎𝟐𝟔.𝟎𝟑.𝟐𝟕南京保利大剧院·《宝玉》\n一场春水、空空看",
+            8: "𝟐𝟎𝟐𝟔.𝟎𝟑.𝟐𝟕南京保利大剧院·《宝玉》\n一场春水、空空看",
+            9: "𝟐𝟎𝟐𝟔.𝟎𝟑.𝟐𝟕南京保利大剧院·《宝玉》\n一场春水、空空看"
+        };
+
+        // =====================================================================
+        // 项目数据库 & 弹窗系统
+        // =====================================================================
+        function openAppleModal(idx) {
+            var projectDatabase = {
+                "1": {
+                    title: "剧场摄影精选",
+                    category: "图频制作",
+                    abstract: "包含精选的舞台返场/谢幕影像，全面涵盖音乐剧、话剧、舞剧。每张均配有详实的拍摄说明，体现出顶尖的现场执行力与视觉审美。",
+                    tags: ["暗光抓拍", "舞台谢幕", "情绪瞬间捕捉"],
+                    toolText: "微单相机",
+                    toolIcon: "📸"
+                },
+                "2": {
+                    title: "特邀媒体代表 · 见面会图频拍摄与内容发布",
+                    category: "图频制作",
+                    abstract: "以核心媒体代表身份受邀出席包括世界巡演级《剧院魅影》、先锋戏剧《寻找李二狗》等大热剧目物料的高质量拍摄录制与多平台联合宣发传播。",
+                    tags: ["媒体直击", "剧组主创见面会", "全链路宣发"],
+                    toolText: "微单相机 + PS",
+                    toolIcon: "📸",
+                    videos: [
+                        { name: "🎬 雪拥蓝关返场《归路》",              url: "http://xhslink.com/o/AVuD9bsKh0W" },
+                        { name: "🎬 当小C和子爵聊起《Think of me》",    url: "http://xhslink.com/o/AY1qh6KK1XE" },
+                        { name: "🎬 你有这么可爱的\"思密达\"出现！",    url: "http://xhslink.com/o/8qHTCXepObL" },
+                        { name: "🎬 长安十二时辰🏮",                    url: "http://xhslink.com/o/AoLYmvxJGOW" }
+                    ]
+                },
+                "3": {
+                    title: "广告 / 海报设计",
+                    category: "图频制作",
+                    abstract: "高水准独立完成了历届大广赛/学院奖入围级品牌创意实战活动海报设计、入围方案「京珐牌」全套营销提案PPT的整案视觉高级美化重谱，并为光明网大客户提供定制海报支持。",
+                    tags: ["大广赛/学院奖", "B端海报物料", "商业级视觉包装"],
+                    toolText: "PS (图像精修/海报设计)",
+                    toolIcon: "🎨"
+                },
+                "4": {
+                    title: "京珐牌营销策划案 (常规赛道二等奖)",
+                    category: "内容策略",
+                    abstract: "荣获2025北京市老字号国潮青年设计大赛官方常规赛道二等奖。深度跟进全样本量消费者调研，主导输出整合式「老字号再就业」创意策略模型与顶级PPT视觉包装。",
+                    tags: ["老字号国潮大赛", "整合营销传播", "消费者深度调研"],
+                    toolText: "Office (PPT 美化)",
+                    toolIcon: "📊",
+                    driveFiles: [
+                        { name: "📊 查看 PDF 营销策划全案", url: "京珐牌年轻化营销方案.pdf" }
+                    ]
+                },
+                "5": {
+                    title: "光明网健康类推文高级策划",
+                    category: "内容策略",
+                    abstract: "于中央重点新闻网站光明网高强度实习期间，针对战略大户「江苏银行北京分行」的官方新媒体矩阵进行主动垂直策略提案，独立撰写完成深度专业长文推文并成功发布。",
+                    tags: ["中央级重点媒体", "江苏银行新媒体", "大健康策略提案"],
+                    toolText: "公众号排版工具 (秀米/135等)",
+                    toolIcon: "✍️",
+                    longImages: ["p5_long1.jpg", "p5_long2.jpg"]
+                },
+                "6": {
+                    title: "学院奖 / 大广赛全案品牌策略",
+                    category: "内容策略",
+                    abstract: "协同团队连续攻坚「超能」「碧柔」等快消大牌实战命题。全链主导前期严谨的消费者定性/定量人群画像特征归纳分析、全周期营销战役策略推演与最终整合提案。",
+                    tags: ["快消大牌全案", "人群画像洞察", "营销战役推演"],
+                    toolText: "Office (Excel 数据分析)",
+                    toolIcon: "📊",
+                    driveFiles: [
+                        { name: "📁 查看品牌策略全案文件", url: "碧柔.pdf" }
+                    ]
+                },
+                "7": {
+                    title: "小红书戏剧垂直赛道账号冷启动运营",
+                    category: "社媒运营",
+                    abstract: "实现戏剧垂直账号从0到1的高壁垒硬核冷启动。聚焦极度垂直且高凝聚力的「中文音乐剧」赛道，成功制造单篇笔记破千点赞的爆款，短时间内精准沉淀垂直涨粉超500+。",
+                    tags: ["从0到1冷启动", "中文音乐剧垂直类", "爆款笔记输出"],
+                    toolText: "小红书运营机制",
+                    toolIcon: "📱",
+                    videos: [
+                        { name: "🎬 去解 去渡 去破 去赴",  url: "http://xhslink.com/o/4XyJ4V6q493" },
+                        { name: "🎬 ♡少女偶像♡ ˚₊⠈ᦒ",    url: "http://xhslink.com/o/7pCM73p44TE " },
+                        { name: "🎬 Flames火焰",    url: "http://xhslink.com/o/446cO0bO48z " }
+                    ]
+                },
+                "8": {
+                    title: "与戏剧垂直头部自媒体联合深度合作传播",
+                    category: "社媒运营",
+                    abstract: "与全网多平台戏剧自媒体大号深度内容合作。输出的高质量现场图频物料被成功免费采纳，并大面积应用到各大号的多渠道重谱宣发主文中。",
+                    tags: ["头部大号联合宣发", "版权协同合作", "跨平台联动"],
+                    toolText: "微单相机 + 媒介协同",
+                    toolIcon: "📸"
+                },
+                "9": {
+                    title: "光明网官方新媒体公众号高阶内容运营",
+                    category: "社媒运营",
+                    abstract: "负责大报级客户江苏银行北京分行官方公众号图文日常运营与生产流程。累计独立发布30+篇图文，零事故安全交付。",
+                    tags: ["中央级重点媒体运营", "30+篇图文独立闭环", "零事故安全交付"],
+                    toolText: "公众号排版工具 + 审校流程",
+                    toolIcon: "✍️",
+                    longImages: ["p9_long1.jpg", "p9_long2.jpg"]
+                }
+            };
+
+            var data = projectDatabase[idx.toString()];
+            var appleModal = document.getElementById('appleModal');
+            if (!data || !appleModal) return;
+
+            // ── 渲染左侧静态文字区 ──
+            document.getElementById('popCategory').innerText = data.category;
+            document.getElementById('popTitle').innerText    = data.title;
+            document.getElementById('popAbstract').innerText = data.abstract;
+            document.getElementById('popToolText').innerText = data.toolText;
+            document.getElementById('popToolIcon').innerHTML = data.toolIcon;
+
+            var pillBox = document.getElementById('popPills');
+            pillBox.innerHTML = '';
+            data.tags.forEach(function(tag) {
+                var span = document.createElement('span');
+                span.className = 'apple-tag-pill';
+                span.innerText = tag;
+                pillBox.appendChild(span);
+            });
+
+            // ── 清除上次残留的动态按钮区 ──
+            var oldActions = document.getElementById('popDynamicActions');
+            if (oldActions) oldActions.remove();
+
+            // ── 动态按钮注入（视频 / 长图 / Drive，由数据驱动） ──
+            var abstractNode = document.getElementById('popAbstract');
+            if (abstractNode) {
+                var section = document.createElement('div');
+                section.id = 'popDynamicActions';
+                section.className = 'pop-action-section';
+                var hasActions = false;
+
+                // 视频外链（项目2、7）
+                if (data.videos && data.videos.length > 0) {
+                    var vLabel = document.createElement('div');
+                    vLabel.className = 'apple-section-label';
+                    vLabel.innerText = '相关视频作品';
+                    section.appendChild(vLabel);
+                    data.videos.forEach(function(vid) {
+                        var a = document.createElement('a');
+                        a.href = vid.url.trim();
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.className = 'pop-action-btn';
+                        a.innerText = vid.name;
+                        section.appendChild(a);
+                    });
+                    hasActions = true;
+                }
+
+                // Google Drive（项目4、6）
+                if (data.driveFiles && data.driveFiles.length > 0) {
+                    var dLabel = document.createElement('div');
+                    dLabel.className = 'apple-section-label';
+                    dLabel.innerText = '项目附件';
+                    section.appendChild(dLabel);
+                    data.driveFiles.forEach(function(file) {
+                        var a = document.createElement('a');
+                        a.href = file.url.trim();
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.className = 'pop-action-btn';
+                        a.innerText = file.name;
+                        section.appendChild(a);
+                    });
+                    hasActions = true;
+                }
+
+                if (hasActions) {
+                    abstractNode.parentNode.insertBefore(section, abstractNode.nextSibling);
+                }
+            }
+
+            // ── 轮播初始化 ──
+            var track = document.getElementById('popSliderTrack');
+            track.innerHTML = '';
+            currentSlideIndex = 0;
+            track.style.transform = 'translateX(0%)';
+            activeImagesArray = [];
+
+            var checkIndex = 1;
+            var maxCheckLimit = 12;
+            var capturedData = data;
+            var capturedIdx  = idx;
+
+            function probeNextImage() {
+                if (checkIndex > maxCheckLimit) { finalizeCarouselUI(); return; }
+                var imgUrl = 'p' + capturedIdx + '_detail' + checkIndex + '.jpg';
+                var tempImg = new Image();
+                (function(url, ci) {
+                    tempImg.onload = function() {
+                        activeImagesArray.push(url);
+                        var slide = document.createElement('div');
+                        slide.className = 'apple-slide';
+                        var img = document.createElement('img');
+                        img.className = 'apple-detail-img';
+                        img.src = url + '?v=2026';
+                        img.alt = capturedData.title + ' 详情图' + ci;
+                        img.style.cursor = 'zoom-in';
+                        img.title = '点击放大查看';
+                        img.addEventListener('click', function() { openZoomLightbox(img.src, img.alt); });
+                        slide.appendChild(img);
+                        // 项目1朋友圈文案遮罩
+                        if (capturedIdx === 1 && customCaptions[ci]) {
+                            var overlay = document.createElement('div');
+                            overlay.className = 'apple-slide-caption-overlay';
+                            if (ci === 1) overlay.classList.add('is-visible');
+                            var bodyNode = document.createElement('div');
+                            bodyNode.className = 'caption-body';
+                            bodyNode.innerText = customCaptions[ci];
+                            overlay.appendChild(bodyNode);
+                            slide.appendChild(overlay);
+                        }
+                        track.appendChild(slide);
+                        checkIndex++;
+                        probeNextImage();
+                    };
+                    tempImg.onerror = function() { finalizeCarouselUI(); };
+                    tempImg.src = url;
+                })(imgUrl, checkIndex);
+            }
+
+            function finalizeCarouselUI() {
+                totalSlidesCount = activeImagesArray.length;
+                var prevBtn = document.getElementById('slidePrev');
+                var nextBtn = document.getElementById('slideNext');
+                if (totalSlidesCount === 0) {
+                    var slide = document.createElement('div');
+                    slide.className = 'apple-slide';
+                    var img = document.createElement('img');
+                    img.className = 'apple-detail-img';
+                    img.src = 'p' + capturedIdx + '.jpg';
+                    img.style.cursor = 'zoom-in';
+                    img.title = '点击放大查看';
+                    img.addEventListener('click', function() { openZoomLightbox(img.src, capturedData.title); });
+                    slide.appendChild(img);
+                    track.appendChild(slide);
+                    totalSlidesCount = 1;
+                }
+                prevBtn.style.display = totalSlidesCount > 1 ? 'flex' : 'none';
+                nextBtn.style.display = totalSlidesCount > 1 ? 'flex' : 'none';
+            }
+
+            probeNextImage();
+            appleModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // =====================================================================
+        // 滑块控制（带文案淡入淡出联动）
+        // =====================================================================
+        function moveSlide(direction) {
+            var track = document.getElementById('popSliderTrack');
+            if (!track || totalSlidesCount <= 1) return;
+            var allOverlays = track.querySelectorAll('.apple-slide-caption-overlay');
+            allOverlays.forEach(function(ol) { ol.classList.remove('is-visible'); });
+            if (direction === 'next') {
+                currentSlideIndex = (currentSlideIndex + 1) % totalSlidesCount;
+            } else {
+                currentSlideIndex = (currentSlideIndex - 1 + totalSlidesCount) % totalSlidesCount;
+            }
+            track.style.transform = 'translateX(-' + (currentSlideIndex * 100) + '%)';
+            setTimeout(function() {
+                var activeSlide = track.children[currentSlideIndex];
+                if (activeSlide) {
+                    var activeOverlay = activeSlide.querySelector('.apple-slide-caption-overlay');
+                    if (activeOverlay) activeOverlay.classList.add('is-visible');
+                }
+            }, 150);
+        }
+
+        function closeAppleModal() {
+            var appleModal = document.getElementById('appleModal');
+            if (appleModal) {
+                appleModal.classList.remove('is-active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // =====================================================================
+        // DOMContentLoaded — 全局事件绑定
+        // =====================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('slidePrev').addEventListener('click', function() { moveSlide('prev'); });
+            document.getElementById('slideNext').addEventListener('click', function() { moveSlide('next'); });
+
+            // 图片区缩放提示徽章（动态注入到右侧图片容器）
+            var galleryWrapper = document.querySelector('.apple-right-gallery-wrapper');
+            if (galleryWrapper) {
+                var badge = document.createElement('div');
+                badge.className = 'img-zoom-hint-badge';
+                badge.innerHTML = '🔍 点击图片可放大查看';
+                galleryWrapper.appendChild(badge);
+            }
+            var tabs = document.querySelectorAll('.filter-tab');
+            var cards = document.querySelectorAll('.portfolio-card');
+            var viewMoreBtn = document.getElementById('viewMoreBtn');
+            var viewMoreWrapper = document.getElementById('viewMoreWrapper');
+            var isExpanded = false;
+
+            function updateCardsVisibility(filterValue) {
+                var visibleCount = 0;
+                cards.forEach(function(card) {
+                    var cardCategory = card.getAttribute('data-category');
+                    if (filterValue === 'all') {
+                        if (isExpanded || visibleCount < 4) {
+                            card.style.setProperty('display', 'flex', 'important');
+                        } else {
+                            card.style.setProperty('display', 'none', 'important');
+                        }
+                        visibleCount++;
+                    } else {
+                        if (cardCategory === filterValue) {
+                            card.style.setProperty('display', 'flex', 'important');
+                        } else {
+                            card.style.setProperty('display', 'none', 'important');
+                        }
+                    }
+                });
+                if (viewMoreBtn && viewMoreWrapper) {
+                    if (filterValue === 'all') {
+                        viewMoreWrapper.style.display = 'block';
+                        viewMoreBtn.innerHTML = isExpanded ? '收起项目 / COLLAPSE PROJECTS' : '查看全部项目 / VIEW ALL PROJECTS';
+                    } else {
+                        viewMoreWrapper.style.display = 'none';
+                    }
+                }
+            }
+
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+                    var filterValue = this.getAttribute('data-filter');
+                    if (filterValue !== 'all') isExpanded = false;
+                    updateCardsVisibility(filterValue);
+                });
+            });
+
+            if (viewMoreBtn) {
+                viewMoreBtn.addEventListener('click', function() {
+                    if (!isExpanded) {
+                        isExpanded = true;
+                    } else {
+                        isExpanded = false;
+                        var targetSec = document.getElementById('portfolio');
+                        if (targetSec) targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    updateCardsVisibility('all');
+                });
+            }
+
+            var modalCloseBtn = document.getElementById('modalCloseBtn');
+            var appleModal = document.getElementById('appleModal');
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeAppleModal);
+            if (appleModal) {
+                appleModal.addEventListener('click', function(e) {
+                    if (e.target === appleModal) closeAppleModal();
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeAppleModal();
+                    document.getElementById('zoomLightbox').classList.remove('is-active');
+                    document.getElementById('longImgViewer').classList.remove('is-active');
+                    document.body.style.overflow = '';
+                }
+                if (appleModal && appleModal.classList.contains('is-active') && totalSlidesCount > 1) {
+                    if (e.key === 'ArrowRight') moveSlide('next');
+                    if (e.key === 'ArrowLeft')  moveSlide('prev');
+                }
+            });
+
+            // 数字滚动计数器
+            var counters = document.querySelectorAll('.stat-number');
+            var runCounters = function() {
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-target'));
+                    var current = 0;
+                    var step = target > 5000 ? Math.floor(target / 45) : Math.ceil(target / 30);
+                    var updateNumber = function() {
+                        current += step;
+                        if (current >= target) {
+                            if (target === 100000)       counter.innerText = '10w+';
+                            else if (target === 30 || target === 500) counter.innerText = target + '+';
+                            else if (target === 100)     counter.innerText = target + '%';
+                            else                         counter.innerText = target;
+                        } else {
+                            if (target === 100000)       counter.innerText = Math.floor(current / 1000) + 'k';
+                            else if (target === 100)     counter.innerText = current + '%';
+                            else                         counter.innerText = current + '+';
+                            requestAnimationFrame(updateNumber);
+                        }
+                    };
+                    updateNumber();
+                });
+            };
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) { runCounters(); observer.unobserve(entry.target); }
+                    });
+                }, { threshold: 0.3 });
+                var panel = document.querySelector('.counter-glass-panel');
+                if (panel) observer.observe(panel);
+            } else {
+                runCounters();
+            }
+
+            updateCardsVisibility('all');
+        });
+    </script>
+</body>
+</html>
